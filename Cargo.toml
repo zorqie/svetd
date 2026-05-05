@@ -1,0 +1,22 @@
+[package]
+name = "svetd"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+artnet_protocol = "0.4.4"
+axum = "0.7"
+crossbeam-channel = "0.5.15"
+env_logger = "0.11.8"
+log = "0.4.29"
+midir = "0.10.3"
+midly = "0.5.3"
+rgb = "0.8.52"
+rosc = "0.11.4"
+rusty_link = "0.4.8"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+socketioxide = "0.13"
+sysinfo = "0.37.2"
+tokio = { version = "1", features = ["full"] }
+tower-http = { version = "0.5", features = ["cors"] }

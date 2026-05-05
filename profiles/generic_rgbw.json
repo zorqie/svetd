@@ -1,0 +1,15 @@
+{
+  "name": "Generic RGBW Par",
+  "availableChannels": {
+    "Red": { "type": "Single Color", "color": "Red" },
+    "Green": { "type": "Single Color", "color": "Green" },
+    "Blue": { "type": "Single Color", "color": "Blue" },
+    "White": { "type": "Single Color", "color": "White" }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "channels": ["Red", "Green", "Blue", "White"]
+    }
+  ]
+}

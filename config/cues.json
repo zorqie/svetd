@@ -1,0 +1,55 @@
+{
+  "cues": {
+    "Cue1": {
+      "name": "Initial Test Cue",
+      "raw_commands": [
+        "1..5,10,12..14@80/3",
+        "gTop@cycle(0,255,4b)"
+      ],
+      "commands": [
+        {
+          "StartEffect": {
+            "target": {
+              "Channels": "1..5,10,12..14"
+            },
+            "effect": {
+              "Fade": {
+                "target_val": 80.0,
+                "duration": {
+                  "Time": 3.0
+                }
+              }
+            }
+          }
+        },
+        {
+          "StartEffect": {
+            "target": {
+              "Groups": [
+                "Top"
+              ]
+            },
+            "effect": {
+              "Cycle": {
+                "min_val": 0.0,
+                "max_val": 255.0,
+                "duration": {
+                  "Tempo": 4.0
+                },
+                "easing": "Sine",
+                "method": "Absolute"
+              }
+            }
+          }
+        }
+      ]
+    },
+	"Cue2": {
+		"name": "manual test",
+		"raw_commands": [
+			"1,4,7,10,13,16,19,22@255/3s",
+			"26,29,32,35,38,41,44,47@255/5s"
+		]
+	}
+  }
+}
