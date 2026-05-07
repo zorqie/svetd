@@ -10,11 +10,6 @@ use rosc::{OscPacket, OscType};
 
 use crate::param::playback::PlayCommand;
 
-static OSC_PORT: u16 = 8001;
-pub static OSC_SOCKET: LazyLock<Arc<UdpSocket>> = LazyLock::new(|| {
-    Arc::new(UdpSocket::bind(("127.0.0.1", OSC_PORT)).expect("Could not bind on OSC port"))
-});
-
 #[derive(Debug, PartialEq, Clone)]
 pub enum OscCommand {
     At { level: f32, target: String },
@@ -25,8 +20,9 @@ pub enum OscCommand {
     Off { target: String },
 }
 
-pub fn start_osc_thread() -> Receiver<Option<OscCommand>> {
-    debug!("Starting OSC listener: {:?}", OSC_SOCKET.local_addr());
+pub fn start_osc_thread(settings: crate::settings::OscSettings) -> Receiver<Option<OscCommand>> {
+    let osc_socket = Arc::new(UdpSocket::bind((settings.bind_address.as_str(), settings.port)).expect("Could not bind on OSC port"));
+    debug!("Starting OSC listener: {:?}", osc_socket.local_addr());
 
     let (osc_tx, osc_rx) = crossbeam_channel::unbounded::<Option<OscCommand>>();
     // let rx_clone = osc_rx.clone(); //NEVER clone Receivers, it's useless. Messages are consumed!!!
@@ -43,7 +39,7 @@ pub fn start_osc_thread() -> Receiver<Option<OscCommand>> {
 
     thread::spawn(move || {
         loop {
-            match OSC_SOCKET.recv_from(&mut buf) {
+            match osc_socket.recv_from(&mut buf) {
                 Ok((size, _addr)) => {
                     let (_, packet) = rosc::decoder::decode_udp(&buf[..size]).unwrap();
                     let cmd = handle_packet(packet);

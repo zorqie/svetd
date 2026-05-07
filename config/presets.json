@@ -1,0 +1,140 @@
+{
+  "intensity": {},
+  "color": {
+    "Red": {
+      "Blue": 0.0,
+      "White": 0.0,
+      "Green": 0.0,
+      "Red": 100.0
+    },
+    "Blue": {
+      "Red": 0.0,
+      "Green": 0.0,
+      "White": 0.0,
+      "Blue": 100.0
+    },
+    "Green": {
+      "Blue": 0.0,
+      "Red": 0.0,
+      "Green": 100.0,
+      "White": 0.0
+    },
+    "White": {
+      "White": 100.0,
+      "Red": 100.0,
+      "Green": 100.0,
+      "Blue": 100.0
+    },
+    "Purple": {
+      "Blue": 100.0,
+      "Red": 50.0,
+      "Green": 0.0,
+      "White": 0.0
+    },
+    "Orange": {
+      "Blue": 0.0,
+      "Red": 100.0,
+      "Green": 25.0,
+      "White": 0.0
+    },
+    "Cyan": {
+      "Blue": 100.0,
+      "Red": 0.0,
+      "Green": 100.0,
+      "White": 0.0
+    },
+    "Yellow": {
+      "Blue": 0.0,
+      "Red": 100.0,
+      "Green": 100.0,
+      "White": 0.0
+    },
+    "Magenta": {
+      "Blue": 100.0,
+      "Red": 100.0,
+      "Green": 0.0,
+      "White": 0.0
+    }
+  },
+  "position": {
+    "Down": {
+      "Tilt": 0.0
+    },
+    "Center": {
+      "Pan": 50.0,
+      "Tilt": 50.0
+    },
+    "Up": {
+      "Tilt": 100.0
+    },
+    "Front": {
+      "Pan": 50.0
+    },
+    "Back": {
+      "Pan": 50.0,
+      "Tilt": 50.0
+    },
+    "Left": {
+      "Pan": 100.0,
+      "Tilt": 50.0
+    },
+    "Right": {
+      "Pan": 0.0,
+      "Tilt": 50.0
+    }
+  },
+  "beam": {
+    "Wide": {
+      "Zoom": 100.0
+    },
+    "Narrow": {
+      "Zoom": 0.0
+    },
+    "Flood": {
+      "Zoom": 100.0,
+      "Dimmer": 100.0
+    },
+    "Beam": {
+      "Zoom": 0.0,
+      "Dimmer": 100.0
+    },
+    "Gobo 1": {
+      "Gobo": 8.0
+    },
+    "Gobo 2": {
+      "Gobo": 16.0
+    },
+    "Gobo 3": {
+      "Gobo": 24.0
+    },
+    "Gobo 4": {
+      "Gobo": 32.0
+    },
+    "Gobo 5": {
+      "Gobo": 40.0
+    },
+    "Gobo 6": {
+      "Gobo": 48.0
+    },
+    "Gobo 7": {
+      "Gobo": 56.0
+    },
+    "FrostFull": {
+      "Frost": 85.0
+    },
+    "FrostHalf": {
+      "Frost": 43.0
+    }
+  },
+  "other": {
+    "LampOn": {
+      "Control": 100.0
+    },
+    "LampOff": {
+      "Control": 91.0
+    },
+    "Reset": {
+      "Control": 170.0
+    }
+  }
+}

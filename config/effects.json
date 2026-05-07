@@ -1,0 +1,49 @@
+{
+  "effects": {
+    "fx3": {
+      "name": "Cycle slow",
+      "raw": "fx(cycle,0,200,8b,sine,absolute)",
+      "params": {
+        "Cycle": {
+          "min_val": 0.0,
+          "max_val": 200.0,
+          "duration": {
+            "Tempo": 8.0
+          },
+          "easing": "Sine",
+          "method": "Absolute"
+        }
+      }
+    },
+    "fx1": {
+      "name": "Random",
+      "raw": "fx(rnd,0,200,2b,sine,absolute)",
+      "params": {
+        "Random": {
+          "min_val": 0.0,
+          "max_val": 510.0,
+          "duration": {
+            "Tempo": 2.0
+          },
+          "easing": "Sine",
+          "method": "Absolute"
+        }
+      }
+    },
+    "fx2": {
+      "name": "Random Down",
+      "raw": "fx(rnd0,0,100,4b,linear,add)",
+      "params": {
+        "Random0": {
+          "min_val": 0.0,
+          "max_val": 255.0,
+          "duration": {
+            "Tempo": 4.0
+          },
+          "easing": "Linear",
+          "method": "Add"
+        }
+      }
+    }
+  }
+}

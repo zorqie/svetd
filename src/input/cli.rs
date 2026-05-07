@@ -9,10 +9,14 @@ pub fn start_cli_thread(tx: Sender<Cue>) {
         let stdin = io::stdin();
         for line in stdin.lock().lines() {
             if let Ok(line) = line {
-                if let Some(cue) = parse_command_line(&line) {
-                    let _ = tx.send(cue);
-                } else {
-                    println!("Unrecognized command format.");
+                match parse_command_line(&line) {
+                    Ok(Some(cue)) => {
+                        let _ = tx.send(cue);
+                    }
+                    Ok(None) => {}
+                    Err(_) => {
+                        println!("Unrecognized command format.");
+                    }
                 }
             }
         }

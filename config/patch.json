@@ -1,22 +1,208 @@
 {
   "fixtures": {
-    "F1": { "name": "Par 1", "address": 1, "profile": "generic_rgb", "mode": 0 },
-    "F2": { "name": "Par 2", "address": 4, "profile": "generic_rgb", "mode": 0 },
-    "F3": { "name": "Par 3", "address": 7, "profile": "generic_rgb", "mode": 0 },
-    "F4": { "name": "Par 4", "address": 10, "profile": "generic_rgb", "mode": 0 },
-    "F5": { "name": "Par 5", "address": 13, "profile": "generic_rgb", "mode": 0 },
-    "F6": { "name": "Par 6", "address": 16, "profile": "generic_rgb", "mode": 0 },
-    "F7": { "name": "Par 7", "address": 19, "profile": "generic_rgb", "mode": 0 },
-    "F8": { "name": "Par 8", "address": 22, "profile": "generic_rgb", "mode": 0 },
-	"F11": { "name": "Par 11", "address": 25, "profile": "generic_rgb", "mode": 0 },
-    "F12": { "name": "Par 12", "address": 28, "profile": "generic_rgb", "mode": 0 },
-    "F13": { "name": "Par 13", "address": 31, "profile": "generic_rgb", "mode": 0 },
-    "F14": { "name": "Par 14", "address": 34, "profile": "generic_rgb", "mode": 0 },
-    "F15": { "name": "Par 15", "address": 37, "profile": "generic_rgb", "mode": 0 },
-    "F16": { "name": "Par 16", "address": 40, "profile": "generic_rgb", "mode": 0 },
-    "F17": { "name": "Par 17", "address": 43, "profile": "generic_rgb", "mode": 0 },
-    "F18": { "name": "Par 18", "address": 46, "profile": "generic_rgb", "mode": 0 },
-    "M1": { "name": "MH 1", "address": 100, "profile": "generic_moving_head", "mode": 0 },
-    "M2": { "name": "MH 2", "address": 106, "profile": "generic_moving_head", "mode": 0 }
+    "F1": {
+      "name": "Par 1",
+      "address": 1,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F2": {
+      "name": "Par 2",
+      "address": 4,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F3": {
+      "name": "Par 3",
+      "address": 7,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F4": {
+      "name": "Par 4",
+      "address": 10,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F5": {
+      "name": "Par 5",
+      "address": 13,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F6": {
+      "name": "Par 6",
+      "address": 16,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F7": {
+      "name": "Par 7",
+      "address": 19,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F8": {
+      "name": "Par 8",
+      "address": 22,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F9": {
+      "name": "Par 9",
+      "address": 25,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F10": {
+      "name": "Par 10",
+      "address": 28,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F11": {
+      "name": "Par 11",
+      "address": 31,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F12": {
+      "name": "Par 12",
+      "address": 34,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F13": {
+      "name": "Par 13",
+      "address": 37,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F14": {
+      "name": "Par 14",
+      "address": 40,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F15": {
+      "name": "Par 15",
+      "address": 43,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F16": {
+      "name": "Par 16",
+      "address": 46,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F17": {
+      "name": "Par 17",
+      "address": 49,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F18": {
+      "name": "Par 18",
+      "address": 52,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F19": {
+      "name": "Par 19",
+      "address": 55,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F20": {
+      "name": "Par 20",
+      "address": 58,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F21": {
+      "name": "Par 21",
+      "address": 61,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F22": {
+      "name": "Par 22",
+      "address": 64,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F23": {
+      "name": "Par 23",
+      "address": 67,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F24": {
+      "name": "Par 24",
+      "address": 70,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F25": {
+      "name": "Par 25",
+      "address": 73,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F26": {
+      "name": "Par 26",
+      "address": 76,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F27": {
+      "name": "Par 27",
+      "address": 79,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F28": {
+      "name": "Par 28",
+      "address": 82,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F29": {
+      "name": "Par 29",
+      "address": 85,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F30": {
+      "name": "Par 30",
+      "address": 88,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F31": {
+      "name": "Par 31",
+      "address": 91,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "F32": {
+      "name": "Par 32",
+      "address": 94,
+      "profile": "generic_rgb",
+      "mode": 0
+    },
+    "M1": {
+      "name": "MH 1",
+      "address": 200,
+      "profile": "generic_moving_head",
+      "mode": 0
+    },
+    "M2": {
+      "name": "MH 2",
+      "address": 206,
+      "profile": "generic_moving_head",
+      "mode": 0
+    }
   }
 }

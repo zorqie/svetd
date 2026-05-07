@@ -1,0 +1,40 @@
+{
+    "lists": {
+        "s1": {
+            "name": "Test 1",
+            "cues": [
+                {
+                    "fade_in": {
+                        "Time": 1.0
+                    },
+                    "hold": {
+                        "Tempo": 4.0
+                    },
+                    "fade_out": {
+                        "Time": 1.0
+                    },
+                    "cue": "q3"
+                },
+                {
+                    "fade_in": {
+                        "Time": 1.0
+                    },
+                    "hold": {
+                        "Tempo": 4.0
+                    },
+                    "fade_out": {
+                        "Time": 1.0
+                    },
+                    "cue": "q4"
+                }
+            ]
+        },
+        "s2": {
+            "name": "Simple red-green",
+            "cues": [
+                "q3",
+                "q4"
+            ]
+        }
+    }
+}

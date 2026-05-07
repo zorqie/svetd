@@ -2,7 +2,7 @@ use std::collections::HashMap;
 use std::fs;
 use serde::{Deserialize, Serialize};
 use crate::engine::command::Cue;
-use crate::input::parser::parse_command;
+use crate::input::parser::{parse_command, ParserState};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct CueStore {
@@ -22,9 +22,10 @@ impl CueStore {
                 let mut modified = false;
                 for cue in store.cues.values_mut() {
                     if cue.commands.is_empty() && !cue.raw_commands.is_empty() {
+                        let mut state = ParserState::default();
                         for raw in &cue.raw_commands {
-                            if let Some(cmd) = parse_command(raw) {
-                                cue.commands.push(cmd);
+                            if let Some(cmds) = parse_command(raw, &mut state) {
+                                cue.commands.extend(cmds);
                             }
                         }
                         modified = true;

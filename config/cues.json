@@ -1,6 +1,6 @@
 {
   "cues": {
-    "Cue1": {
+    "q1": {
       "name": "Initial Test Cue",
       "raw_commands": [
         "1..5,10,12..14@80/3",
@@ -44,12 +44,112 @@
         }
       ]
     },
-	"Cue2": {
-		"name": "manual test",
-		"raw_commands": [
-			"1,4,7,10,13,16,19,22@255/3s",
-			"26,29,32,35,38,41,44,47@255/5s"
-		]
-	}
+    "q3": {
+      "name": "simple red",
+      "raw_commands": [
+        "1..48*3@255",
+        "2..48*3@0/1s"
+      ],
+      "commands": [
+        {
+          "SetLevel": {
+            "target": {
+              "Channels": "1,4,7,10,13,16,19,22,25,28,31,34,37,40,43,46"
+            },
+            "value": {
+              "Numeric": 255.0
+            }
+          }
+        },
+        {
+          "StartEffect": {
+            "target": {
+              "Channels": "2,5,8,11,14,17,20,23,26,29,32,35,38,41,44,47"
+            },
+            "effect": {
+              "Fade": {
+                "target_val": 0.0,
+                "duration": {
+                  "Time": 1.0
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "q4": {
+      "name": "simple green",
+      "raw_commands": [
+        "2..48*3@255",
+        "1..48*3@0/1s"
+      ],
+      "commands": [
+        {
+          "SetLevel": {
+            "target": {
+              "Channels": "2,5,8,11,14,17,20,23,26,29,32,35,38,41,44,47"
+            },
+            "value": {
+              "Numeric": 255.0
+            }
+          }
+        },
+        {
+          "StartEffect": {
+            "target": {
+              "Channels": "1,4,7,10,13,16,19,22,25,28,31,34,37,40,43,46"
+            },
+            "effect": {
+              "Fade": {
+                "target_val": 0.0,
+                "duration": {
+                  "Time": 1.0
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "q2": {
+      "name": "manual test",
+      "raw_commands": [
+        "1,4,7,10,13,16,19,22@255/3s",
+        "26,29,32,35,38,41,44,47@255/5s"
+      ],
+      "commands": [
+        {
+          "StartEffect": {
+            "target": {
+              "Channels": "1,4,7,10,13,16,19,22"
+            },
+            "effect": {
+              "Fade": {
+                "target_val": 255.0,
+                "duration": {
+                  "Time": 3.0
+                }
+              }
+            }
+          }
+        },
+        {
+          "StartEffect": {
+            "target": {
+              "Channels": "26,29,32,35,38,41,44,47"
+            },
+            "effect": {
+              "Fade": {
+                "target_val": 255.0,
+                "duration": {
+                  "Time": 5.0
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
   }
 }

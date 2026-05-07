@@ -22,6 +22,8 @@ pub enum Command {
     SetTempo { bpm: f32 },
     StartEffect { target: Target, effect: Effect },
     StopEffect { target: Target },
+    StartCueList { list: String },
+    StopCueList { list: String },
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

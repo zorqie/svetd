@@ -1,0 +1,42 @@
+{
+  "name": "Generic RGBWAUV Par",
+  "availableChannels": {
+    "Red": {
+      "type": "Single Color",
+      "color": "Red"
+    },
+    "Green": {
+      "type": "Single Color",
+      "color": "Green"
+    },
+    "Blue": {
+      "type": "Single Color",
+      "color": "Blue"
+    },
+    "White": {
+      "type": "Single Color",
+      "color": "White"
+    },
+    "Amber": {
+      "type": "Single Color",
+      "color": "Amber"
+    },
+    "UV": {
+      "type": "Single Color",
+      "color": "UV"
+    }
+  },
+  "modes": [
+    {
+      "name": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    }
+  ]
+}

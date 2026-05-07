@@ -1,0 +1,29 @@
+{
+  "groups": {
+    "g1": {
+      "name": "Top",
+      "heads": [
+        "F1",
+        "F2",
+        "F3",
+        "F4"
+      ]
+    },
+    "g2": {
+      "name": "Bottom",
+      "heads": [
+        "F5",
+        "F6",
+        "F7",
+        "F8"
+      ]
+    },
+    "g3": {
+      "name": "Movers",
+      "heads": [
+        "M1",
+        "M2"
+      ]
+    }
+  }
+}

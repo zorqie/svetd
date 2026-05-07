@@ -11,6 +11,7 @@ pub struct Fixture {
     pub profile: Arc<OflProfile>,
     pub mode_index: usize,
     pub parameters: HashMap<String, Arc<FloatParam>>,
+    pub presets: crate::store::preset_store::PresetStore,
 }
 
 impl Fixture {
@@ -56,44 +57,137 @@ impl Fixture {
             profile,
             mode_index,
             parameters,
+            presets: crate::store::preset_store::PresetStore::new(),
         }
     }
 
-    pub fn handle_command(&self, cmd: &Command) {
+    pub fn handle_command(&self, cmd: &Command, global_presets: &crate::store::preset_store::PresetStore) {
         match cmd {
             Command::SetLevel { value, .. } => {
-                let level = match value {
-                    Value::Numeric(n) => *n,
-                    Value::Semantic(_) => 255.0,
-                };
-                if let Some(p) = self.parameters.get("Dimmer") {
-                    p.store(level);
+                match value {
+                    Value::Numeric(n) => {
+                        if let Some(p) = self.parameters.get("Dimmer") {
+                            p.store(*n);
+                        }
+                    }
+                    Value::Semantic(s) => {
+                        let mut applied = false;
+                        let mut preset_values = None;
+                        
+                        for (p_name, values) in &self.presets.intensity {
+                            if p_name.eq_ignore_ascii_case(s) {
+                                preset_values = Some(values);
+                                break;
+                            }
+                        }
+                        if preset_values.is_none() {
+                            for (p_name, values) in &global_presets.intensity {
+                                if p_name.eq_ignore_ascii_case(s) {
+                                    preset_values = Some(values);
+                                    break;
+                                }
+                            }
+                        }
+                        if preset_values.is_none() {
+                            for (p_name, values) in &global_presets.beam {
+                                if p_name.eq_ignore_ascii_case(s) {
+                                    preset_values = Some(values);
+                                    break;
+                                }
+                            }
+                        }
+                        if preset_values.is_none() {
+                            for (p_name, values) in &global_presets.other {
+                                if p_name.eq_ignore_ascii_case(s) {
+                                    preset_values = Some(values);
+                                    break;
+                                }
+                            }
+                        }
+
+                        if let Some(values) = preset_values {
+                            for (ch_name, val_pct) in values {
+                                if let Some(p) = self.parameters.get(ch_name) {
+                                    p.store(val_pct * 2.55);
+                                }
+                            }
+                            applied = true;
+                        }
+
+                        if !applied && s.eq_ignore_ascii_case("full") {
+                            if let Some(p) = self.parameters.get("Dimmer") {
+                                p.store(255.0);
+                            }
+                        }
+                    }
                 }
             }
             Command::SetColor { color, .. } => {
                 if let Value::Semantic(c) = color {
-                    let (r, g, b) = match c.to_lowercase().as_str() {
-                        "red" => (255.0, 0.0, 0.0),
-                        "green" => (0.0, 255.0, 0.0),
-                        "blue" => (0.0, 0.0, 255.0),
-                        "purple" => (128.0, 0.0, 128.0),
-                        "white" => (255.0, 255.0, 255.0),
-                        _ => (0.0, 0.0, 0.0),
-                    };
-                    if let Some(p) = self.parameters.get("Red") {
-                        p.store(r);
+                    let mut preset_values = None;
+                    for (p_name, values) in &self.presets.color {
+                        if p_name.eq_ignore_ascii_case(c) {
+                            preset_values = Some(values);
+                            break;
+                        }
                     }
-                    if let Some(p) = self.parameters.get("Green") {
-                        p.store(g);
+                    if preset_values.is_none() {
+                        for (p_name, values) in &global_presets.color {
+                            if p_name.eq_ignore_ascii_case(c) {
+                                preset_values = Some(values);
+                                break;
+                            }
+                        }
                     }
-                    if let Some(p) = self.parameters.get("Blue") {
-                        p.store(b);
+
+                    if let Some(values) = preset_values {
+                        for (ch_name, val_pct) in values {
+                            if let Some(p) = self.parameters.get(ch_name) {
+                                p.store(val_pct * 2.55);
+                            }
+                        }
+                    } else {
+                        // fallback
+                        let (r, g, b) = match c.to_lowercase().as_str() {
+                            "red" => (255.0, 0.0, 0.0),
+                            "green" => (0.0, 255.0, 0.0),
+                            "blue" => (0.0, 0.0, 255.0),
+                            "purple" => (128.0, 0.0, 128.0),
+                            "white" => (255.0, 255.0, 255.0),
+                            _ => (0.0, 0.0, 0.0),
+                        };
+                        if let Some(p) = self.parameters.get("Red") { p.store(r); }
+                        if let Some(p) = self.parameters.get("Green") { p.store(g); }
+                        if let Some(p) = self.parameters.get("Blue") { p.store(b); }
+                        if let Some(p) = self.parameters.get("White") {
+                            if c.to_lowercase() == "white" { p.store(255.0); } else { p.store(0.0); }
+                        }
                     }
-                    if let Some(p) = self.parameters.get("White") {
-                        if c.to_lowercase() == "white" {
-                            p.store(255.0);
-                        } else {
-                            p.store(0.0);
+                }
+            }
+            Command::SetPosition { pos, .. } => {
+                if let Value::Semantic(p_str) = pos {
+                    let mut preset_values = None;
+                    for (p_name, values) in &self.presets.position {
+                        if p_name.eq_ignore_ascii_case(p_str) {
+                            preset_values = Some(values);
+                            break;
+                        }
+                    }
+                    if preset_values.is_none() {
+                        for (p_name, values) in &global_presets.position {
+                            if p_name.eq_ignore_ascii_case(p_str) {
+                                preset_values = Some(values);
+                                break;
+                            }
+                        }
+                    }
+
+                    if let Some(values) = preset_values {
+                        for (ch_name, val_pct) in values {
+                            if let Some(p) = self.parameters.get(ch_name) {
+                                p.store(val_pct * 2.55);
+                            }
                         }
                     }
                 }

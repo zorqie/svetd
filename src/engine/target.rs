@@ -86,4 +86,5 @@ pub enum Target {
     Fixtures(Vec<String>),
     Groups(Vec<String>),
     Parameters(Vec<String>),
+    Mixed(Vec<Target>),
 }
